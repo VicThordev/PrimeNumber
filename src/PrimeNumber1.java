@@ -5,7 +5,7 @@ public class PrimeNumber1 {
         if (pNum<=1) return false;
         for (int i=2;i<Math.sqrt(pNum);i++)
             if (pNum%i==0) return false;
-            return true;
+        return true;
     }
     public static void main(String[] args) {
         System.out.println("Enter a number: ");
