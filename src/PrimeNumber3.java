@@ -1,38 +1,39 @@
 import java.util.ArrayList;
 
 public class PrimeNumber3 {
-    int pNumAdd=0;
-    ArrayList<Integer> arr =new ArrayList<>(10);
+    int pNumAdd = 0;
+    ArrayList<Integer> arr = new ArrayList<>(10);
 
 
-    public void primeMethod1(ArrayList<Integer> arr) {
-        arr.add(1);
-        arr.add(3);
-        arr.add(13);
-        arr.add(21);
-        arr.add(24);
-        arr.add(45);
-        arr.add(17);
-        for (int pNum:arr) {
-            if (pNum<2) System.out.println(pNum+" is not a prime number.");
-            else if (pNum%2==0) System.out.println(pNum+" is not a prime number.");
-            for (int i = 2; i < Math.sqrt(pNum); i+=arr.size()) {
-                if (pNum % i == 0) System.out.println(pNum+" is not a prime number.");
-                else pMethod2(pNum);
-            }
+    public static boolean ifPrime(int prime) {
+        if (prime <= 1) return false;
+        else if (prime == 2) return true;
+        else if (prime % 2 == 0) return false;
+        for (int i = 2; i < Math.sqrt(prime); i++) {
+            if (prime % i == 0) return false;
+            else return true;
         }
 
+
+return true;
+}
+
+public static int sumPrime(int [] arr) {
+    int sum=0;
+
+        for (int prime : arr) {
+            if (ifPrime(prime)) sum+=prime;
         }
-
-    private void pMethod2(int pNum) {
-        System.out.println(pNum + " is a prime number.");
-        pNumAdd+= pNum;
-        System.out.printf("%d is the sum of prime numbers.%n", pNumAdd);
-    }
-
-
+    System.out.println("The sum of the prime numbers are "+sum);
+        return sum;
+}
     public static void main(String [] args) {
-        PrimeNumber3 primeNumber3 = new PrimeNumber3();
-        primeNumber3.primeMethod1(primeNumber3.arr);
+        int [] arr = {2,4,5,43,4,5,3,54,32,23};
+
+        System.out.print("The numbers are ");
+        for (int i=0;i< arr.length;i++) {
+            System.out.print(arr[i]+" ");
+        }
+        sumPrime(arr);
     }
 }
